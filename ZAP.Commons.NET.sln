@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3A673A4F-0BDD-4C72-8A2D-9D05E38B7382}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZAP.Commons", "src\ZAP.Commons\ZAP.Commons.csproj", "{01035F46-C674-47AE-AE20-12B7FF04F531}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01035F46-C674-47AE-AE20-12B7FF04F531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01035F46-C674-47AE-AE20-12B7FF04F531}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01035F46-C674-47AE-AE20-12B7FF04F531}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01035F46-C674-47AE-AE20-12B7FF04F531}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01035F46-C674-47AE-AE20-12B7FF04F531} = {3A673A4F-0BDD-4C72-8A2D-9D05E38B7382}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83212572-B1B3-4D72-837E-D27FDE15EA88}
+	EndGlobalSection
+EndGlobal
