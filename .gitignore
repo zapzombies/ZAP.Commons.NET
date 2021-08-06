@@ -4,3 +4,6 @@
 
 /src/ZAP.Commons/obj
 /.vs
+/test/ZAP.Commons.Tests/bin/Debug/net5.0
+/test/ZAP.Commons.Tests/obj
+/src/ZAP.Commons/bin/Debug/net5.0
