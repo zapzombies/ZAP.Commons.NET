@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Prelist
+      run: |
+        ls
+        echo $PWD
     - name: Checkout 
       uses: actions/checkout@v2.3.4
       with: 
