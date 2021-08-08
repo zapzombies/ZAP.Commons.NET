@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <PackageId>ZAP.Commons.NET</PackageId>
     <Company>ZAP</Company>
     <RepositoryUrl>https://github.com/zapzombies/ZAP.Commons.NET</RepositoryUrl>
   </PropertyGroup>
