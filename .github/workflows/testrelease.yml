@@ -22,4 +22,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: log stuff
-      run: echo ${GITHUB_REF/refs\/tags\/v/}
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+    - name: log 2
+      run: echo ${VERSION}
