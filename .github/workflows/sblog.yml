@@ -1,6 +1,15 @@
 name: SbLog
 
 on: workflow_dispatch
+  inputs:
+    sb: 
+      description: 'Are you sb?'
+      required: true
+      default: yes
+    z:
+      description: 'testing'
+      required: false
+      default: 23
 
 jobs:
   one:
