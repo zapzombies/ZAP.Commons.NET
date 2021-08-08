@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal --configuration Release /p:Version=${VERSION}
     - name: Packing
-      run: dotnet pack --configuration Release  --no-build --output .
+      run: dotnet pack --configuration Release --no-build --output /p:Version=${VERSION} --output .
     - name: Publishing 
-      run: dotnet nuget push NuGet.Workflow.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${{github.token}}
+      run: dotnet nuget push ZAP.Commons.${VERSION}.nupkg --source https://nuget.pkg.github.com/zapzombies/index.json --api-key ${{github.token}}
       
