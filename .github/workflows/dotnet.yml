@@ -1,0 +1,16 @@
+name: .NET
+
+on:
+  workflow_dispatch:
+  
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Dump github context
+      run: | 
+        echo github context
+        echo ${{toJson(github)}}
