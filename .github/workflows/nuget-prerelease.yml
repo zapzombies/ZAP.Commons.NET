@@ -1,0 +1,36 @@
+name: Publish Prerelease Nuget to Github Package
+
+on:
+  push:
+    branches: 
+    - staging
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Set Pre-release version from latest release
+      run: |
+        echo "Fetching version information..."
+        tag=$(curl --silent "https://api.github.com/repos/${{ github.event.repository.full_name }}/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')
+        echo "BASE_VERSION=${tag/v/}" >> $GITHUB_ENV
+        ts=$(date +%s)
+        echo "VERSION=${BASE_VERSION}-prerelease${ts}" >> $GITHUB_ENV
+        echo "Version: ${VERSION}"
+    - name: Build
+      run: dotnet build --no-restore --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION}
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION}
+    - name: Packing
+      run: dotnet pack --configuration Release --no-build /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION} --output .
+    - name: Publishing 
+      run: dotnet nuget push ZAP.Commons.${VERSION}.nupkg --source https://nuget.pkg.github.com/zapzombies/index.json --api-key ${{github.token}}
+      
