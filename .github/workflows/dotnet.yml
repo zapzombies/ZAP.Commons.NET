@@ -13,4 +13,4 @@ jobs:
     - name: Dump github context
       run: | 
         echo github context
-        echo ${{ format(github.repository.git_tags_url, 'latest') }}
+        echo ${{ github.repository.git_tags_url }}
