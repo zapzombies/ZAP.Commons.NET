@@ -29,9 +29,9 @@ jobs:
         echo "VERSION=${tag/v/}-preview${ts}" >> $GITHUB_ENV
         echo "Nuget package version: ${tag/v/}-preview${ts}"
     - name: Build
-      run: dotnet build --no-restore --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION} /p:Authors=${AUTHORS} /p:RepositoryUrl=${URL}
+      run: dotnet build --no-restore --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION} /p:Authors="${AUTHORS}" /p:RepositoryUrl=${URL}
     - name: Test
-      run: dotnet test --no-build --verbosity normal --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION} /p:Authors=${AUTHORS} /p:RepositoryUrl=${URL} 
+      run: dotnet test --no-build --verbosity normal --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION} /p:Authors="${AUTHORS}" /p:RepositoryUrl=${URL} 
     - name: Packing
       run: dotnet pack --configuration Release --no-build /p:Version=${VERSION} --output .
     - name: Publishing 
