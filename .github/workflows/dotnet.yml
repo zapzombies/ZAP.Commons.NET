@@ -13,4 +13,4 @@ jobs:
     - name: Dump github context
       run: | 
         echo github context
-        echo https://api.github.com/repos/${{ github.event.repository.full_name }}/releases/latest
+        echo "https://api.github.com/repos/${{ github.event.repository.full_name }}/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")'
