@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env: 
+      AUTHORS: "Zombies Amendment Project"
+      URL: "https://github.com/${{ github.event.repository.full_name }}"
 
     steps:
     - uses: actions/checkout@v2
@@ -24,11 +27,11 @@ jobs:
         echo "BASE_VERSION=${tag/v/}" >> $GITHUB_ENV
         ts=$(date +%s)
         echo "VERSION=${tag/v/}-preview${ts}" >> $GITHUB_ENV
-        echo "Version: ${VERSION}"
+        echo "Nuget package version: ${tag/v/}-preview${ts}"
     - name: Build
-      run: dotnet build --no-restore --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION}
+      run: dotnet build --no-restore --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION} /p:Authors=${AUTHORS} /p:RepositoryUrl=${URL} /p:ProjectUrl=${URL}
     - name: Test
-      run: dotnet test --no-build --verbosity normal --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION}
+      run: dotnet test --no-build --verbosity normal --configuration Release /p:Version=${VERSION} /p:AssemblyVersion=${BASE_VERSION} /p:Authors=${AUTHORS} /p:RepositoryUrl=${URL} /p:ProjectUrl=${URL}
     - name: Packing
       run: dotnet pack --configuration Release --no-build /p:Version=${VERSION} --output .
     - name: Publishing 
